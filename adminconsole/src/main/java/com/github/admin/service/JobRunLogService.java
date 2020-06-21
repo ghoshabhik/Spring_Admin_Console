@@ -1,6 +1,7 @@
 package com.github.admin.service;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,5 +24,13 @@ public class JobRunLogService {
 		}
 		jobLog.setLogText(log);
 		return repository.save(jobLog);
+	}
+	
+	public List<JobRunLog> getAllLogs(){
+		return repository.findAll();
+	}
+	
+	public JobRunLog getLog(Integer id) {
+		return repository.findById(id).get();
 	}
 }

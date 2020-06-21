@@ -3,6 +3,7 @@ package com.github.admin.service;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,6 +23,18 @@ public class JobService {
 	
 	public List<TalendArtifact> getAllDeployedJobs(){
 		return talendRepo.findAll();
+	}
+	
+	public List<TalendArtifact> getAllDIJobs(){
+		List<TalendArtifact> data = getAllDeployedJobs();
+		return data.stream().filter(d -> d.getJobType().equalsIgnoreCase("ZIP"))
+							.collect(Collectors.toList());  
+	}
+	
+	public List<TalendArtifact> getAllESBJobs(){
+		List<TalendArtifact> data = getAllDeployedJobs();
+		return data.stream().filter(d -> d.getJobType().equalsIgnoreCase("KAR"))
+							.collect(Collectors.toList());  
 	}
 	
 	public TalendArtifact getArtifactById(String artifactId) {

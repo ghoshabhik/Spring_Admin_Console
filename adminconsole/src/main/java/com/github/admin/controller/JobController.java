@@ -3,6 +3,7 @@ package com.github.admin.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,6 +18,7 @@ import com.github.admin.service.JobService;
 
 @RestController
 @RequestMapping("/talend")
+@CrossOrigin
 public class JobController {
 	
 	@Autowired
@@ -25,6 +27,15 @@ public class JobController {
 	@GetMapping("/getAllDeployedJobs")
 	public List<TalendArtifact> getAllDeployedJobs(){
 		return jobservice.getAllDeployedJobs();
+	}
+	
+	@GetMapping("/getAllDIJobs")
+	public List<TalendArtifact> getAllDIJobs(){
+		return jobservice.getAllDIJobs();
+	}
+	@GetMapping("/getAllESBJobs")
+	public List<TalendArtifact> getAllESBJobs(){
+		return jobservice.getAllESBJobs();
 	}
 	
 	@GetMapping("/getJobById")
