@@ -43,37 +43,37 @@ public class JobController {
 		return jobservice.getArtifactById(id);
 	}
 	
-	@PostMapping("addJob")
+	@PostMapping("/addJob")
 	public TalendArtifact addJob(@RequestBody TalendArtifact talendArtifact) {
 		return jobservice.addJobWithArtifact(talendArtifact);
 	}
 	
-	@PutMapping("updateJob")
+	@PutMapping("/updateJob")
 	public TalendArtifact updateJob(@RequestBody TalendArtifact talendArtifact) {
 		return jobservice.updateJobWithArtifact(talendArtifact);
 	}
 	
-	@DeleteMapping("deleteJob")
+	@DeleteMapping("/deleteJob")
 	public String deleteJob(@RequestParam String id) {
 		return jobservice.deleteJobById(id);
 	}
 	
-	@GetMapping("deployJob")
+	@GetMapping("/deployJob")
 	public String deployJob(@RequestParam String id) {
 		return jobservice.deployJob(id);
 	}
 	
-	@GetMapping("undeployJob")
+	@GetMapping("/undeployJob")
 	public String undeployJob(@RequestParam String id) {
 		return jobservice.undeployJob(id);
 	}
 	
-	@GetMapping("triggerJob")
+	@GetMapping("/triggerJob")
 	public String triggerJob(@RequestParam String id) {
 		return jobservice.triggerJob(id);
 	}
 	
-	@GetMapping("killJob")
+	@GetMapping("/killJob")
 	public String killJob(@RequestParam String id) {
 		return jobservice.killJob(id);
 	}
